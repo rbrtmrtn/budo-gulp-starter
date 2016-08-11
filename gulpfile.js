@@ -14,33 +14,33 @@ const babelify = require('babelify').configure({
   presets: ['es2015'] 
 })
 
-const entry = './src/index.js'
+const entry = './src/scripts/index.js'
 const outfile = 'bundle.js'
 
 //our CSS pre-processor
 gulp.task('sass', function() {
-  gulp.src('./src/sass/main.scss')
+  gulp.src('./src/styles/main.scss')
     .pipe(sass({ 
       outputStyle: argv.production ? 'compressed' : undefined,
       includePaths: [ resetCSS ] 
     }).on('error', sass.logError))
-    .pipe(gulp.dest('./app'))
+    .pipe(gulp.dest('./dist'))
 })
 
 //the development task
 gulp.task('watch', ['sass'], function(cb) {
   //watch SASS
-  gulp.watch('src/sass/*.scss', ['sass'])
+  gulp.watch('src/styles/*.scss', ['sass'])
 
   //dev server
   budo(entry, {
-    serve: 'bundle.js',     // end point for our <script> tag
+    serve: 'bundle.js',     // endpoint for our <script> tag
     stream: process.stdout, // pretty-print requests
     live: true,             // live reload & CSS injection
-    dir: 'app',             // directory to serve
+    dir: 'dist',            // directory to serve
     open: argv.open,        // whether to open the browser
     browserify: {
-      transform: babelify   //browserify transforms
+      transform: babelify   // browserify transforms
     }
   }).on('exit', cb)
 })
@@ -53,5 +53,5 @@ gulp.task('bundle', ['sass'], function() {
     .pipe(source('index.js'))
     .pipe(streamify(uglify()))
     .pipe(rename(outfile))
-    .pipe(gulp.dest('./app'))
+    .pipe(gulp.dest('./dist'))
 })
