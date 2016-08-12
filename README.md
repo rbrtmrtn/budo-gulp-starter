@@ -1,8 +1,10 @@
-# budo-gulp-starter
+# budo-react-starter
 
 [![stable](http://badges.github.io/stability-badges/dist/stable.svg)](http://github.com/badges/stability-badges)
 
-A "starter kit" with [budō](https://github.com/mattdesl/budo), SASS, and Gulp. The aim is rapid iteration and a tight feedback loop. Could be augmented with VueJS, React, or any frameworks that work in browserify.
+Forked from the awesome [budo-gulp-starter](https://github.com/mattdesl/budo-gulp-starter).
+
+A "starter kit" with [budō](https://github.com/mattdesl/budo), SASS, Gulp, and React. The aim is rapid iteration and a tight feedback loop.
 
 [[demo]](http://mattdesl.github.io/budo-gulp-starter/app/)
 
@@ -17,6 +19,7 @@ Some highlights:
     - Syntax errors reported in the browser
     - LiveReload browser refresh on `bundle.js` update
     - LiveReload CSS injection on *.scss changes
+  - React
   
 Note that budō is not tied to Gulp, and in some cases it may be easier to use it's command-line version. 
 
